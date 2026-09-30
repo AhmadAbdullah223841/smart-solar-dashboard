@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Solar Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- Top Bar -->
+
+    <div class="top-bar">
+
+        <div class="brand">
+            ☀️ Smart Solar
+        </div>
+
+        <button
+            id="themeToggle"
+            class="theme-toggle"
+            onclick="toggleTheme()"
+            aria-label="Toggle theme"
+        >
+            🌙
+        </button>
+
+    </div>
+
+
+    <!-- Header -->
+
+    <header>
+
+        <h1>
+            Smart Solar Dashboard
+        </h1>
+
+        <p>
+            Weather-Based Solar Energy Monitoring
+        </p>
+
+        <p>
+            📍 Mohammadpur, Dhaka, Bangladesh
+        </p>
+
+    </header>
+
+
+    <!-- Dashboard Cards -->
+
+    <section class="dashboard">
+
+
+        <div class="card">
+
+            <h3>
+                🌡️ Temperature
+            </h3>
+
+            <div class="value">
+
+                <span id="temperature">
+                    --
+                </span>
+
+                °C
+
+            </div>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <h3>
+                ☀️ Solar Radiation
+            </h3>
+
+            <div class="value">
+
+                <span id="radiation">
+                    --
+                </span>
+
+                W/m²
+
+            </div>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <h3>
+                ☁️ Cloud Cover
+            </h3>
+
+            <div class="value">
+
+                <span id="cloud">
+                    --
+                </span>
+
+                %
+
+            </div>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <h3>
+                💧 Humidity
+            </h3>
+
+            <div class="value">
+
+                <span id="humidity">
+                    --
+                </span>
+
+                %
+
+            </div>
+
+        </div>
+
+
+
+        <div class="card">
+
+            <h3>
+                💨 Wind Speed
+            </h3>
+
+            <div class="value">
+
+                <span id="wind">
+                    --
+                </span>
+
+                km/h
+
+            </div>
+
+        </div>
+
+
+
+        <div class="card highlight">
+
+            <h3>
+                ⚡ Estimated Solar Power
+            </h3>
+
+            <div class="value">
+
+                <span id="power">
+                    --
+                </span>
+
+                kW
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- Solar Status -->
+
+    <section class="status-box">
+
+        <h2>
+            Solar Potential
+        </h2>
+
+        <div id="status">
+            Loading...
+        </div>
+
+        <p id="updated">
+            Last update: --
+        </p>
+
+    </section>
+
+
+    <!-- Information -->
+
+    <section class="info">
+
+        <h2>
+            About This System
+        </h2>
+
+        <p>
+
+            This system uses online weather and
+            solar radiation data to estimate
+            solar energy generation.
+
+        </p>
+
+        <p>
+
+            Estimated solar power is a prediction
+            and is not directly measured from
+            a physical solar panel.
+
+        </p>
+
+    </section>
+
+
+</div>
+
+
+<script src="script.js"></script>
+
+
+<script>
+
+    function toggleTheme() {
+
+        document.body.classList.toggle("dark");
+
+        const button =
+            document.getElementById("themeToggle");
+
+
+        if (
+            document.body.classList.contains("dark")
+        ) {
+
+            button.textContent = "☀️";
+
+            localStorage.setItem(
+                "theme",
+                "dark"
+            );
+
+        }
+
+        else {
+
+            button.textContent = "🌙";
+
+            localStorage.setItem(
+                "theme",
+                "light"
+            );
+
+        }
+
+    }
+
+
+    // Remember selected theme
+
+    window.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            const savedTheme =
+                localStorage.getItem("theme");
+
+            const button =
+                document.getElementById(
+                    "themeToggle"
+                );
+
+
+            if (savedTheme === "dark") {
+
+                document.body.classList.add(
+                    "dark"
+                );
+
+                button.textContent = "☀️";
+
+            }
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>
